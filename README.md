@@ -119,3 +119,34 @@ position in cross-axis every single elemtent
     flex:3;
 }
 ```
+
+### 4.1 grow / shrink / basis
+
+`flex-grow` by default is 0 
+
+below example : box1 will consume rest of space 
+
+if we set `flex-grow:10` it will consume 10 of  extra space 
+
+`flex-shrink` by deafault evenly divide 
+
+`flex-shrink:10` - how much of myself give up in relation to other element 
+
+```css
+.box1 {
+    flex-basis:400px;
+    flex-grow:1;
+}
+.box2 {
+    flex-basis:400px;
+}
+```
+
+
+
+```css
+flex:10 5 400px /* grow, shrink, basis */
+```
+
+
+
