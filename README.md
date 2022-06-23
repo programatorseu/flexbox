@@ -65,3 +65,18 @@ by default is set to stretch
   align-items: center;
 }
 ```
+
+### 3.3 Align-content
+```css
+  
+  .container {
+      display:flex;
+      flex-wrap: wrap;
+      border:10px solid red;
+      height:100vh;
+      align-content: flex-start;
+  }
+  .box {
+      width:33.333%;
+  }
+```
