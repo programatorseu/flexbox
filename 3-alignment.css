@@ -1,0 +1,29 @@
+.container {
+  display:flex;
+  border:10px solid mistyrose;
+  min-height:100vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/*align-items*/
+.container {
+  display:flex;
+  border:10px solid mistyrose;
+  height:100vh;w
+  align-items: center;
+}
+
+/*align-content*/
+
+  .container {
+      display:flex;
+      flex-wrap: wrap;
+      border:10px solid red;
+      height:100vh;
+      align-content: flex-start;
+  }
+
+  .box {
+      width:33.333%;
+  }
