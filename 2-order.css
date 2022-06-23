@@ -1,0 +1,11 @@
+.box {
+  flex:1;
+}
+
+.box3 {
+  order:1;
+}
+
+.box5 {
+  order:2;
+}
