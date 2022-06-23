@@ -98,4 +98,7 @@ position in cross-axis every single elemtent
   .box3 {
       align-self: center;
   }
+  .box4 {
+    align-self:stretch;
+   }
   ```
