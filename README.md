@@ -80,3 +80,22 @@ by default is set to stretch
       width:33.333%;
   }
 ```
+
+### 3.4 align-self
+position in cross-axis every single elemtent
+```css
+  .container {
+      display:flex;
+      border:10px solid red;
+      height:100vh;
+      align-items:flex-start;
+  }
+
+  
+  .box2 {
+      align-self: flex-end;
+  }
+  .box3 {
+      align-self: center;
+  }
+  ```
