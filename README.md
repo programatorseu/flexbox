@@ -102,3 +102,20 @@ position in cross-axis every single elemtent
     align-self:stretch;
    }
   ```
+## 4. Flexbox Sizing 
+
+- what to do with extra space 
+
+ twice size (double amount that rest have )
+
+```css
+.box {
+    flex:1;
+}
+.box2 {
+    flex:2;
+}
+.box4 {
+    flex:3;
+}
+```
