@@ -148,5 +148,65 @@ if we set `flex-grow:10` it will consume 10 of  extra space
 flex:10 5 400px /* grow, shrink, basis */
 ```
 
+### 5.2 Flex basis and wraping 
+
+if we want to set size of each element and total width is beyond the width of screen 
+
+we need to set `flex-wrap` for parent container and to deal with extra space `flex-grow` for individual element 
+
+```css
+  .container {
+      display:flex;
+     flex-wrap: wrap;
+    }
+
+.box {
+    flex-basis: 500px;
+    flex-grow: 1;
+}
+```
+
+if we set grow bigger for particual element  - it will effect only row with element 
+
+```css
+.box3 {
+    background:azure;
+    flex-grow: 12;
+}
+```
+
+if we want to work with column - flex direction and min-height (vh) and flex-grow to individual element
+
+```css
+  .container {
+      display:flex;
+     flex-wrap: wrap;
+     flex-direction: column;
+     min-height: 100vh;
+    }
+
+.box {
+    flex-grow: 1;
+}
+```
+
+assuming - individual element has `flex-basis` param 
+
+if we set `height` instead of `min-height` we will get 2 columns instead of 1
+
+```css
+  .container {
+     height: 100vh;
+    }
+
+.box {
+    flex-basis: 200px;
+    flex-grow: 1;
+}
+
+```
+
+
+
 
 
