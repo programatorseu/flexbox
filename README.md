@@ -148,7 +148,7 @@ if we set `flex-grow:10` it will consume 10 of  extra space
 flex:10 5 400px /* grow, shrink, basis */
 ```
 
-### 5.2 Flex basis and wraping 
+### 4.2 Flex basis and wraping 
 
 if we want to set size of each element and total width is beyond the width of screen 
 
