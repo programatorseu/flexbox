@@ -206,6 +206,69 @@ if we set `height` instead of `min-height` we will get 2 columns instead of 1
 
 ```
 
+### 4.3 Cross browser - flexbox auto-prefixer 
+
+Many options: 
+
+autoprefixer.github.io -> 1 option 
+
+codekit or other app
+
+#### Create Own Observer or Watcher 
+
+**requirements**
+
+1) npm 
+2) gulp 
+
+**steps**
+
+1. Curl Command-Line Tool ; 
+
+```bash
+sudo apt install curl
+```
+
+-  nodejs  - follow instructions 
+
+https://github.com/nodesource/distributions/blob/master/README.md#debinstall
+
+```bash
+# Using Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+apt-get install -y nodejs
+```
+
+in our folder  - create package.json 
+
+install gulp globally / local version
+
+```bash
+npm init
+npm install gulp -g
+npm install gulp --save-dev
+npm install gulp-autoprefixer
+touch gulpfile.js
+```
+
+ 
+
+```js
+var gulp = require('gulp');
+const autoprefixer = require('gulp-autoprefixer');
+gulp.task('prefix', () =>
+    gulp.src('style.css')
+        .pipe(autoprefixer({
+            cascade: false
+    }))
+    .pipe(gulp.dest('style'))
+);
+```
+
 
 
 
