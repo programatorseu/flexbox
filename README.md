@@ -268,8 +268,57 @@ gulp.task('prefix', () =>
     .pipe(gulp.dest('style'))
 );
 ```
+## 5. Menu
 
+```html
+<div class="container">
+  <nav class="flex-nav">
+  <ul>
+    <li><a href="#">item 01</a></li>
+    ..
+    <li class="social"><a href=""><i class="fab fa-twitter"></i></a></li>
+  </ul>
+</nav>
+</div>
+```
 
+```css
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  padding: 50px;
+}
+.flex-nav ul {
+   
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display:flex;
+ 
+}
+.flex-nav li {
+  flex:3;
+}
+.flex-nav .social {
+  flex:1;
+}
 
+@media all and (max-width:1000px) {
+  .flex-nav ul {
+   flex-wrap:wrap;
+  }
+  .flex-nav li {
+    flex: 1 1 50%;
+  }
+  .flex-nav .social {
+    flex:1 1 25%;
+  }
+}
+@media all and(max-width:500px) {
+  .flex-nav li {
+    flex-basis:100%;
+  }
+}
+```
 
 
