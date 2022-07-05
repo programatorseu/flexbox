@@ -1,210 +1,252 @@
-# flexbox
-Flexbox - simple guide for myself
+## Flexbox
 
-## 1. Flex-direction 
-```flex-direction:row``` main-axis => x  | cross-axis => y
-with ```flex-wrap``` and setting width to `.box` we can create 3 col layout 
+1-dimenional content
+
+- taking bunch of items of different sizes / return the besat layout for those items
+
+```html
+    <div class="wrapper">
+      <main class="content">
+        <article>
+          <p>
+            This is an article of content that sits inline with a sidebar. There’s not
+            enough room in the viewport at the moment so it’s all very squished.
+          </p>
+        </article>
+      </main>
+      <aside class="sidebar">
+        <p>This is a sidebar that is squished.</p>
+      </aside>
+    </div>
+```
 
 ```css
-.container {
+html {
+  box-sizing:border-box;
+  font-family:'Roboto', 'Lato';
+  font-size:15px;
+}
+*, *:after, *:before {
+  box-sizing:inherit;
+}
+
+body {
+  max-width:50rem;
+  padding:2rem;
+  border:1px solid #d2d2d2;
+  background:#d6d3ef;
+  margin:1rem auto;
+}
+.wrapper {
   display:flex;
-  border:10px solid goldenrod;
-  min-height:100vh;
   flex-wrap:wrap;
+} 
+.wrapper > * {
+  padding:1rem;
 }
-.box {
-  width:33.3333333%;
+.wrapper {
+  background:white;
+  border:1px solid #c2c2c2;
 }
-```
-
-## 2. Flex order
-we set order to individual items
-
-```css
-.box {
-  flex:1;
+.sidebar {
+  background:#e8f0fe;
+  flex-grow:1;
+  flex-basis:12rem;
 }
-
-.box3 {
-  order:1;
-}
-
-.box5 {
-  order:2;
+.content {
+  flex-basis:0;
+  flex-grow:2;
+  min-width:70%;
 }
 ```
-## 3. Flexbox Alignment and centering
-### 3.1 justify-content
 
-> alignment along the main axis 
 
-- flex-start / center / flex-end - move whole bunch to those 3 positions
-- space-between - move item to each side and give equal space to the rest 
-- space-around - each has some space
 
-if we change flex-direction to column and then add center -> it will be positioned at center of website:
+**main axis and cross axis**
+
+=> if `flex-direction` set to row 
+
+> main-axis - row | cross-axis - column
+
+
+
+**flex container**
+
+```html
+<div class="container" id="container">
+  <div>One</div>
+  <div>Item two</div>
+  <div>The item we will refer to as three</div>
+</div>
+```
+
 ```css
 .container {
-  display:flex;
-  border:10px solid mistyrose;
-  min-height:100vh;
+  display: flex;
+}
+```
+
+give you a block-level box, with flex item children
+
+- `row`: the items lay out as a row.
+- `row-reverse:` the items lay out as a row from the end of the flex container.
+- `column`: the items lay out as a column.
+- `column-reverse` : the items lay out as a column from the end of the flex container.
+
+**wrapping flex items**
+
+The initial value of the `flex-wrap` property is `nowrap`. This means that if there is not enough space in the container the items will overflow.
+
+
+
+when flex container wraps: 
+
+- creates multiple flex lines 
+
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+```
+
+with flex-flow we can control direction and wrapping
+
+```css
+.container {
+  display: flex;
+  flex-flow: column wrap;
+}
+```
+
+
+
+**controlling space inside flex items**
+
+- our container can have more space than is needed to display items
+
+> items line up at the start do not grow to fill space 
+
+*initial value of* `flex-` is : 
+
+- `flex-grow: 0`: items do not grow.
+
+- `flex-shrink: 1`: items can shrink smaller than their `flex-basis`.
+
+- `flex-basis: auto`: items have a base size of `auto`.
+
+  
+
+  if we set `flex:auto`:
+
+
+
+`flex-grow: 1`: items can grow larger than their `flex-basis`.
+
+`flex-shrink: 1`: items can shrink smaller than their `flex-basis`.
+
+`flex-basis: auto`: items have a base size of `auto`.
+
+
+
+if we set `flex:1`
+
+- `flex-grow: 1`: items can grow larger than their `flex-basis`.
+- `flex-shrink: 1`: items can shrink smaller than their `flex-basis`.
+- `flex-basis: 0`: items have a base size of `0`.
+
+
+
+
+
+```css
+.item1 {
+  flex: 1 1 auto;
+}
+
+.item2 {
+  flex: 2 1 auto;
+}
+```
+
+`flex-basis` of `auto` is to allow the browser to figure out space distribution.
+
+
+
+**flexbox alignment**
+
+basically : working on main axis we use `justify-` / cross axis : `align-`
+
+- **properties for space distribution**
+
+​	`justify-content`: space distribution on the main axis.
+
+​	`align-content`: space distribution on the cross axis.
+
+​	`place-content`: a shorthand for setting both of the above properties.
+
+**alignment **
+
+- `align-self`: aligns a single item on the cross axis
+- `align-items`: aligns all of the items as a group on the cross axis
+
+
+
+### Distribute space on main axis 
+
+initial value of `justify-content` is `flex-start`
+
+If your items fill the axis then there is no space to share out so the property won't do anything.
+
+```css
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+```
+
+**options we have **
+
+- flex-start / flex-end
+- space-around / space-evenly / space-between 
+
+- center
+
+
+
+if we change to `flex-direction` to `column`
+
+- we need to give our container height 
+
+```css
+.container {  
+display: flex;
+  max-width: 30rem;
+  height: 25rem;
   flex-direction: column;
-  justify-content: center;
-}
-```
-### 3.2 Align-items
- concerned with cross axis 
-=> container must have some height 
-by default is set to stretch
-
-```css
-.container {
-  display:flex;
-  border:10px solid mistyrose;
-  height:100vh;
-  align-items: center;
+  gap: 1rem;
 }
 ```
 
-### 3.3 Align-content
-```css
-  
-  .container {
-      display:flex;
-      flex-wrap: wrap;
-      border:10px solid red;
-      height:100vh;
-      align-content: flex-start;
-  }
-  .box {
-      width:33.333%;
-  }
-```
+**distribute space between flex lines**
 
-### 3.4 align-self
-position in cross-axis every single elemtent
-```css
-  .container {
-      display:flex;
-      border:10px solid red;
-      height:100vh;
-      align-items:flex-start;
-  }
+- `align-content` by deafult is set to stretch 
 
-  
-  .box2 {
-      align-self: flex-end;
-  }
-  .box3 {
-      align-self: center;
-  }
-  .box4 {
-    align-self:stretch;
-   }
-  ```
-## 4. Flexbox Sizing 
+we need to remeber about : 
 
-- what to do with extra space 
+`flex-wrap`
 
- twice size (double amount that rest have )
+`heigh` or `min-height` for container 
 
-```css
-.box {
-    flex:1;
-}
-.box2 {
-    flex:2;
-}
-.box4 {
-    flex:3;
-}
-```
+**place-content**
 
-### 4.1 grow / shrink / basis
+ set both `justify-content` and `align-content`
 
-`flex-grow` by default is 0 
-
-below example : box1 will consume rest of space 
-
-if we set `flex-grow:10` it will consume 10 of  extra space 
-
-`flex-shrink` by deafault evenly divide 
-
-`flex-shrink:10` - how much of myself give up in relation to other element 
-
-```css
-.box1 {
-    flex-basis:400px;
-    flex-grow:1;
-}
-.box2 {
-    flex-basis:400px;
-}
-```
+if you specify both the first is used for `align-content` and the second for `justify-content`.
 
 
 
-```css
-flex:10 5 400px /* grow, shrink, basis */
-```
 
-### 4.2 Flex basis and wraping 
-
-if we want to set size of each element and total width is beyond the width of screen 
-
-we need to set `flex-wrap` for parent container and to deal with extra space `flex-grow` for individual element 
-
-```css
-  .container {
-      display:flex;
-     flex-wrap: wrap;
-    }
-
-.box {
-    flex-basis: 500px;
-    flex-grow: 1;
-}
-```
-
-if we set grow bigger for particual element  - it will effect only row with element 
-
-```css
-.box3 {
-    background:azure;
-    flex-grow: 12;
-}
-```
-
-if we want to work with column - flex direction and min-height (vh) and flex-grow to individual element
-
-```css
-  .container {
-      display:flex;
-     flex-wrap: wrap;
-     flex-direction: column;
-     min-height: 100vh;
-    }
-
-.box {
-    flex-grow: 1;
-}
-```
-
-assuming - individual element has `flex-basis` param 
-
-if we set `height` instead of `min-height` we will get 2 columns instead of 1
-
-```css
-  .container {
-     height: 100vh;
-    }
-
-.box {
-    flex-basis: 200px;
-    flex-grow: 1;
-}
-
-```
 
 ### 4.3 Cross browser - flexbox auto-prefixer 
 
